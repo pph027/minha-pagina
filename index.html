@@ -4,27 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meu Portfólio / Perfil</title>
-    
+
     <style>
         /* =========================================================
            VARIÁVEIS DE CORES E ESTILOS GERAIS
-           (Dica para os alunos: alterem as cores aqui!)
         ========================================================= */
         :root {
-            --cor-primaria: #25eb32;       /* Cor de destaque/botões */
-            --cor-primaria-hover: #145d2a; /* Cor ao passar o mouse */
-            --cor-fundo: #000000;          /* Cor de fundo da página */
-            --cor-card: #004b04;           /* Fundo dos cartões */
-            --cor-texto: #e6ff40;          /* Cor do texto principal */
-            --cor-texto-suave: #53ff9e;    /* Cor de textos secundários */
-            --borda: #00c100;              /* Linhas de divisão */
+            --cor-primaria: #25eb32;
+            --cor-primaria-hover: #145d2a;
+            --cor-fundo: #000000;
+            --cor-card: #004b04;
+            --cor-texto: #e6ff40;
+            --cor-texto-suave: #53ff9e;
+            --borda: #00c100;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: Verdana, Geneva, sans-serif;
         }
 
         body {
@@ -34,11 +33,58 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* =========================================================
+           ESTRELAS EMOJIS CAINDO NO FUNDO
+        ========================================================= */
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            top: -60px;
+            font-size: 20px;
+            animation: cair linear infinite;
+            opacity: 0.8;
+            user-select: none;
+        }
+
+        @keyframes cair {
+            0% {
+                transform: translateY(-60px) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.9;
+            }
+
+            90% {
+                opacity: 0.9;
+            }
+
+            100% {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
         }
 
         /* =========================================================
            CABEÇALHO E MENU DE NAVEGAÇÃO
         ========================================================= */
+
         header {
             background-color: var(--cor-card);
             border-bottom: 1px solid var(--borda);
@@ -84,12 +130,15 @@
         /* =========================================================
            CONTEÚDO PRINCIPAL
         ========================================================= */
+
         main {
             flex: 1;
             max-width: 900px;
             width: 100%;
             margin: 2rem auto;
             padding: 0 1.5rem;
+            position: relative;
+            z-index: 1;
         }
 
         .profile-card {
@@ -101,7 +150,10 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
         }
 
-        /* Container da Imagem de Perfil */
+        /* =========================================================
+           IMAGEM DE PERFIL
+        ========================================================= */
+
         .profile-image-container {
             width: 160px;
             height: 160px;
@@ -138,7 +190,10 @@
             margin: 0 auto 2rem auto;
         }
 
-        /* Seção de Destaques/Projetos */
+        /* =========================================================
+           SEÇÃO DE DESTAQUES / PROJETOS
+        ========================================================= */
+
         .content-section {
             text-align: left;
             margin-top: 2.5rem;
@@ -162,6 +217,7 @@
         /* =========================================================
            RODAPÉ
         ========================================================= */
+
         footer {
             background-color: var(--cor-card);
             border-top: 1px solid var(--borda);
@@ -169,6 +225,8 @@
             padding: 1.5rem;
             font-size: 0.9rem;
             color: var(--cor-texto-suave);
+            position: relative;
+            z-index: 1;
         }
 
         footer a {
@@ -179,81 +237,225 @@
         footer a:hover {
             text-decoration: underline;
         }
+
+        /* =========================================================
+           RESPONSIVIDADE PARA CELULAR
+        ========================================================= */
+
+        @media (max-width: 600px) {
+            .navbar {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            main {
+                padding: 0 1rem;
+                margin: 1rem auto;
+            }
+
+            .profile-card {
+                padding: 1.5rem;
+            }
+
+            .student-name {
+                font-size: 1.6rem;
+            }
+
+            .profile-image-container {
+                width: 130px;
+                height: 130px;
+            }
+
+            .star {
+                font-size: 16px;
+            }
+        }
     </style>
 </head>
+
 <body>
 
     <!-- =========================================================
-         1. CABEÇALHO / NAVEGAÇÃO
-         Para adicionar novas páginas, basta criar novos arquivos .html 
-         (ex: sobre.html, projetos.html) e adicionar um <li> no menu abaixo.
+         ESTRELAS NO FUNDO
     ========================================================= -->
+
+    <div class="stars">
+
+        <span class="star" style="left: 3%; animation-duration: 7s; animation-delay: 0s;">⭐</span>
+        <span class="star" style="left: 8%; animation-duration: 10s; animation-delay: 2s;">✨</span>
+        <span class="star" style="left: 14%; animation-duration: 8s; animation-delay: 4s;">🌟</span>
+        <span class="star" style="left: 19%; animation-duration: 12s; animation-delay: 1s;">⭐</span>
+        <span class="star" style="left: 25%; animation-duration: 9s; animation-delay: 5s;">✨</span>
+        <span class="star" style="left: 31%; animation-duration: 11s; animation-delay: 3s;">🌟</span>
+        <span class="star" style="left: 37%; animation-duration: 8s; animation-delay: 6s;">⭐</span>
+        <span class="star" style="left: 43%; animation-duration: 10s; animation-delay: 2s;">✨</span>
+        <span class="star" style="left: 49%; animation-duration: 13s; animation-delay: 0s;">🌟</span>
+        <span class="star" style="left: 55%; animation-duration: 9s; animation-delay: 4s;">⭐</span>
+        <span class="star" style="left: 61%; animation-duration: 11s; animation-delay: 1s;">✨</span>
+        <span class="star" style="left: 67%; animation-duration: 8s; animation-delay: 5s;">🌟</span>
+        <span class="star" style="left: 73%; animation-duration: 12s; animation-delay: 2s;">⭐</span>
+        <span class="star" style="left: 79%; animation-duration: 9s; animation-delay: 6s;">✨</span>
+        <span class="star" style="left: 85%; animation-duration: 10s; animation-delay: 3s;">🌟</span>
+        <span class="star" style="left: 91%; animation-duration: 7s; animation-delay: 1s;">⭐</span>
+        <span class="star" style="left: 96%; animation-duration: 11s; animation-delay: 4s;">✨</span>
+
+    </div>
+
+    <!-- =========================================================
+         CABEÇALHO / NAVEGAÇÃO
+    ========================================================= -->
+
     <header>
+
         <nav class="navbar">
-            <a href="index.html" class="nav-logo">Meu Site</a>
-            
+
+            <a href="index.html" class="nav-logo">
+                Meu Site
+            </a>
+
             <ul class="nav-links">
-                <li><a href="index.html" class="active">Início</a></li>
-                
-                <!-- ALUNO: Descomente ou duplique as linhas abaixo quando criar novas páginas -->
-                <!-- <li><a href="sobre.html">Sobre Mim</a></li> -->
-                <!-- <li><a href="projetos.html">Projetos</a></li> -->
-                <!-- <li><a href="contato.html">Contato</a></li> -->
+
+                <li>
+                    <a href="index.html" class="active">
+                        Início
+                    </a>
+                </li>
+
+                <!--
+                Para adicionar novas páginas:
+
+                <li>
+                    <a href="sobre.html">
+                        Sobre Mim
+                    </a>
+                </li>
+
+                <li>
+                    <a href="projetos.html">
+                        Projetos
+                    </a>
+                </li>
+
+                <li>
+                    <a href="contato.html">
+                        Contato
+                    </a>
+                </li>
+                -->
+
             </ul>
+
         </nav>
+
     </header>
 
     <!-- =========================================================
-         2. CONTEÚDO PRINCIPAL
+         CONTEÚDO PRINCIPAL
     ========================================================= -->
+
     <main>
+
         <div class="profile-card">
-            
-            <!-- ALUNO: Substitua o 'src' pelo caminho da sua imagem (ex: foto.jpg ou uma URL da web) -->
+
+            <!-- IMAGEM DE PERFIL -->
+
             <div class="profile-image-container">
-                <img 
-                    src="https://i.pinimg.com/736x/b0/5a/9f/b05a9f7bfaa3cdf88589eea2a656c999.jpg" 
-                    alt="Foto de Perfil do Aluno" 
+
+                <img
+                    src="https://i.pinimg.com/736x/b0/5a/9f/b05a9f7bfaa3cdf88589eea2a656c999.jpg"
+                    alt="Foto de Perfil do Aluno"
                     class="profile-image"
                 >
+
             </div>
 
-            <!-- ALUNO: Altere para o seu nome e profissão/estudo -->
-            <h1 class="student-name">Pedro Henrique</h1>
-            <p class="student-role">Estudante de Informática / Programador Iniciante</p>
-            
-            <!-- ALUNO: Escreva um pequeno resumo sobre você -->
+            <!-- NOME -->
+
+            <h1 class="student-name">
+                Pedro Henrique
+            </h1>
+
+            <!-- FUNÇÃO -->
+
+            <p class="student-role">
+                Estudante de Informática / Programador Iniciante
+            </p>
+
+            <!-- BIO -->
+
             <p class="student-bio">
-                Bem-vindo ao meu site pessoal! Aqui compartilho meus projetos, 
+                Bem-vindo ao meu site pessoal! Aqui compartilho meus projetos,
                 estudos e o que venho aprendendo em desenvolvimento web e tecnologia.
             </p>
 
-            <!-- Seção de informações adicionais -->
+            <!-- =====================================================
+                 SEÇÃO DE INFORMAÇÕES
+            ===================================================== -->
+
             <section class="content-section">
-                <h2>Meus Interesses & Habilidades</h2>
-                
+
+                <h2>
+                    Meus Interesses & Habilidades
+                </h2>
+
                 <div class="info-box">
-                    <strong>Tecnologias que estou aprendendo:</strong>
-                    <p>HTML5, CSS3, JavaScript, Git & GitHub</p>
+
+                    <strong>
+                        Tecnologias que estou aprendendo:
+                    </strong>
+
+                    <p>
+                        HTML5, CSS3, JavaScript, Git & GitHub
+                    </p>
+
                 </div>
 
                 <div class="info-box">
-                    <strong>Sobre meus projetos:</strong>
-                    <p>Este site foi desenvolvido e hospedado gratuitamente usando o GitHub Pages durante as aulas práticas.</p>
+
+                    <strong>
+                        Sobre meus projetos:
+                    </strong>
+
+                    <p>
+                        Este site foi desenvolvido e hospedado gratuitamente
+                        usando o GitHub Pages durante as aulas práticas.
+                    </p>
+
                 </div>
+
             </section>
 
         </div>
+
     </main>
 
     <!-- =========================================================
-         3. RODAPÉ
+         RODAPÉ
     ========================================================= -->
+
     <footer>
-        <p>&copy; 2026 - Desenvolvido por <strong>Pedro Henrique</strong></p>
-        <p>Hospedado no <a href="https://pages.github.com/" target="_blank">GitHub Pages</a></p>
+
+        <p>
+            &copy; 2026 - Desenvolvido por
+            <strong>Pedro Henrique</strong>
+        </p>
+
+        <p>
+            Hospedado no
+            <a
+                href="https://pages.github.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                GitHub Pages
+            </a>
+        </p>
+
     </footer>
 
 </body>
 </html>
-
